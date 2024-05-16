@@ -17,7 +17,7 @@ public class Util_ {
             Scanner scan = new Scanner(myFile);
             while (scan.hasNextLine()) {
                 String data = scan.nextLine();
-                music += " " + data;
+                music += data + " ";
             }
             scan.close();
         } catch(Exception ex){
