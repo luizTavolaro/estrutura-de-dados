@@ -13,7 +13,7 @@ public class Util_ {
     public String readFile(){
         String music = "";
         try{
-            File myFile = new File("file/music.txt");
+            File myFile = new File("estrutura-de-dados-proj2/file/music.txt");
             Scanner scan = new Scanner(myFile);
             while (scan.hasNextLine()) {
                 String data = scan.nextLine();
