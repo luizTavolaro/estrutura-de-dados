@@ -2,6 +2,10 @@
 public class ArvoreBinaria {
 
     Palavra root;
+    Palavra maiorNode;
+    ArvoreBinaria ordenadaPelaOcorrencia;
+    int totalNodes;
+
 
     ArvoreBinaria() {
     // Cria uma árvore binária vazia
@@ -129,10 +133,28 @@ public class ArvoreBinaria {
         visitaInOrdem(e.right);        
     }
 
+    public void contaNodes(Palavra e){
+        if (e == null)
+            return;        
+        totalNodes += 1;
+        contaNodes(e.left);
+        contaNodes(e.right);        
+    }
+
+    public void maiorPalavra(Palavra root_){
+        if(root_ == null)
+            return;
+        if(root_.palavra.length() > maiorNode.palavra.length()){
+            maiorNode = root_;
+        }
+        maiorPalavra(root_.left);
+        maiorPalavra(root_.right);
+    }
+
     public Palavra encontraPalavra(Palavra root_, Palavra p){
         if(root_ == null) return null;
         if(root_.palavra.compareTo(p.palavra) == 0) {
-            p.ocorrencias += 1;
+            root_.ocorrencias += 1;
             return root_;
         }
 
@@ -162,11 +184,37 @@ public class ArvoreBinaria {
         p.parent = aux;
         if (aux == null) {
             root = p;
+            maiorNode = p;
         } else if (aux.palavra.compareTo(p.palavra) > 0) { 
             aux.left = p;
         } else {
             aux.right = p; 
         }
-       
+    }
+
+    public void inserePalavraPelaOcorrencia(Palavra p){
+        Palavra finded = encontraPalavra(root, p);
+        if(finded != null) return;
+
+        Palavra aux = null;
+        Palavra root_ = root();
+        while (root_ != null) {
+            aux = root_;
+            if (root_.ocorrencias > p.ocorrencias) { 
+                root_ = root_.left;
+            } else {
+                root_ = root_.right;
+            }
+        }
+
+        p.parent = aux;
+        if (aux == null) {
+            root = p;
+            maiorNode = p;
+        } else if (aux.ocorrencias > p.ocorrencias) { 
+            aux.left = p;
+        } else {
+            aux.right = p; 
+        }
     }
 }

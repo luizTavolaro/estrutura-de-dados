@@ -10,7 +10,7 @@ public class Palavra {
     }
 
     public void exibePalavra(){
-        System.out.println(palavra);
+        System.out.println("palavra: " + palavra + " ocorrências: " + ocorrencias);
     }
 
 }
