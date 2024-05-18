@@ -129,24 +129,24 @@ public class ArvoreBinaria {
         visitaInOrdem(e.right);        
     }
 
-    public Palavra encontraPalavra(Palavra root, Palavra p){
-        if(root == null) return null;
-        if(root.palavra == p.palavra) {
+    public Palavra encontraPalavra(Palavra root_, Palavra p){
+        if(root_ == null) return null;
+        if(root_.palavra.compareTo(p.palavra) == 0) {
             p.ocorrencias += 1;
-            return root;
+            return root_;
         }
 
-        if(root.palavra.compareTo(p.palavra) < 0 ){
-            return encontraPalavra(root.left, p);
+        if(root_.palavra.compareTo(p.palavra) < 0 ){
+            return encontraPalavra(root_.right, p);
         }   
         else { 
-            return encontraPalavra(root.right, p);
+            return encontraPalavra(root_.left, p);
         }
     }
 
     public void inserePalavra(Palavra p){
         Palavra finded = encontraPalavra(root, p);
-        if(finded == null) return;
+        if(finded != null) return;
 
         Palavra aux = null;
         Palavra root_ = root();

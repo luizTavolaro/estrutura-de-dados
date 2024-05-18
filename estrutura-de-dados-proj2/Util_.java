@@ -23,22 +23,16 @@ public class Util_ {
         } catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-        return music.toUpperCase();
+        return music.toUpperCase().trim();
     }
 
-    public void fillTree(String data){
+    public ArvoreBinaria fillTree(String data){
         ArvoreBinaria tree = new ArvoreBinaria();
         String[] words = data.split(" ");
         for (String w : words){
-            Palavra p = new Palavra(w);
-            // System.out.println(p.palavra);
-            try{
-                if(tree.isEmpty()) {
-                    tree.addRoot(p);
-                }
-            }
-            catch(Exception ex){System.out.println("Não Funcionou");}
+            Palavra p = new Palavra(w.trim());
+            tree.inserePalavra(p);
         }
-        System.out.println(tree.root.palavra);
+        return tree;
     }
 }
