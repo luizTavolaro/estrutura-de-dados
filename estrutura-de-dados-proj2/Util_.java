@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Util_ {
     public int rows = 0;
     public int totalWords = 0;
-    public ArvoreBinaria ordenadaPelaOcorrencia;
+    public ArvoreBinaria ordenadaPelaOcorrencia = new ArvoreBinaria();
 
     public Util_(){
     }
@@ -74,15 +74,14 @@ public class Util_ {
         tree.visitaInOrdem(tree.root);
     }
 
-    public void criaArvoreOrdenadaPelaOcorrencia(ArvoreBinaria tree){
-        this.ordenadaPelaOcorrencia = tree;
-    }
-
     public void percorreArvoreParaInserirOrdenada(Palavra e){
 
         if (e == null)
             return;        
-        ordenadaPelaOcorrencia.inserePalavraPelaOcorrencia(e);
+            
+        Palavra p = new Palavra(e.palavra, e.ocorrencias);
+        ordenadaPelaOcorrencia.inserePalavraPelaOcorrencia(p);
+
         percorreArvoreParaInserirOrdenada(e.left);
         percorreArvoreParaInserirOrdenada(e.right);   
 

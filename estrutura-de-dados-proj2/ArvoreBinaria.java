@@ -193,9 +193,6 @@ public class ArvoreBinaria {
     }
 
     public void inserePalavraPelaOcorrencia(Palavra p){
-        Palavra finded = encontraPalavra(root, p);
-        if(finded != null) return;
-
         Palavra aux = null;
         Palavra root_ = root();
         while (root_ != null) {
@@ -206,11 +203,9 @@ public class ArvoreBinaria {
                 root_ = root_.right;
             }
         }
-
         p.parent = aux;
         if (aux == null) {
             root = p;
-            maiorNode = p;
         } else if (aux.ocorrencias > p.ocorrencias) { 
             aux.left = p;
         } else {

@@ -27,8 +27,7 @@ public class Main {
                     util.ordemAlfabeitca(tree);
                     break;
                 case 5:
-                    util.criaArvoreOrdenadaPelaOcorrencia(tree);
-                    util.percorreArvoreParaInserirOrdenada(util.ordenadaPelaOcorrencia.root);
+                    util.percorreArvoreParaInserirOrdenada(tree.root);
                     util.ordenadaPelaOcorrencia.visitaInOrdem(util.ordenadaPelaOcorrencia.root);
                     break;
                 case 6:
